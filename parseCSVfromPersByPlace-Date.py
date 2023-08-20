@@ -73,7 +73,7 @@ def parseDatabaseFile (inputFileBdd):
                                              fieldnames[2]: key
                                              })
 
-    return input("Traitement terminé"
+    return print("Traitement terminé"
                 "\nLe fichier qui contient les doublons se trouve à la racine du dossier network: " +FILEWITHDUPLICATES +
                  "\nLe fichier qui contient les liens du réseau se trouve à la racine du dossier network : "+NETWORKFILE)
 
