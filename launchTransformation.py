@@ -24,7 +24,7 @@ while os.path.exists(INPUTFILE) == False:
 
 # if the path is correct,  generateLinksWithDatesAndPlaces will be called to launch the treatment
 else:
-    method= input("Pour générer des liens avec calcul du poids tapez 1.\nPour générer des liens avec les dates et les lieu, tapez 2.")
+    method= input("Pour générer des liens avec calcul du poids tapez 1.\nPour générer des liens avec les dates et les lieu, tapez 2.\n")
     if int(method) == 1:
         outputWeightFile = os.path.join(absolute_path, NETWORKFILEWITHWEIGHT)
         generateLinkWithWeight(INPUTFILE, duplicatesFile,outputWeightFile)
