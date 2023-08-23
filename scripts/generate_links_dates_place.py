@@ -37,8 +37,8 @@ def generateLinksWithDatesAndPlaces(INPUTFILE, DUPLICATES,NETWORKFILEWITHDATES):
                                      fieldnames[2]: key
                                      })
     return print("Traitement terminé"
-                "\nLe fichier qui contient les doublons se trouve à la racine du dossier network: " +DUPLICATES +
-                 "\nLe fichier qui contient les liens du réseau se trouve à la racine du dossier network : "+NETWORKFILEWITHDATES)
+                "\nLe fichier qui contient les doublons se trouve ici : " +DUPLICATES +
+                 "\nLe fichier qui contient les liens du réseau se trouve ici : "+NETWORKFILEWITHDATES)
 
 
 
