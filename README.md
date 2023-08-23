@@ -1,8 +1,11 @@
-# Script qui permet de générer les liens d'un réseau à partir d'un fichier contenant des dates des lieux et des personnes. 
+# Programme qui permet de générer les liens d'un réseau à partir d'un fichier contenant des dates, des lieux et des personnes. 
 
 Le script prend en entrée un fichier csv qui contient une liste avec des dates, des lieux et des personnes et le nombre de fois que les personnes se trouvent au même lieu au même moment.
-Il doit contenir au minimum les colonnes suivantes. Les noms des colonnes doivent être identiques à l'orthographie ci-dessous:
-**date_evenement**,**nomLieuFr**,**nom**,**prenom**,**id_personne**
+
+Il doit contenir au minimum les colonnes suivantes:
+**date_evenement**, **nomLieuFr**, **nom**, **prenom**, **id_personne**
+
+Les noms des colonnes doivent être identiques à l'orthographie ci-dessus.
 Il peut contenir d'autres colonnes qui ne seront pas traitées.
 
 Voici un exemple avec quelques données en entrée:
@@ -19,9 +22,9 @@ date_evenement,nomLieuFr,nom,prenom,id_personne,countLieuCommunByPerson
 1810-07-20,Albi,Mellet,Anne-Marie,120,2
 ```
 
-Il génère en sortie un fichier avec des liens entre chaque personne qui est présente au même moment au même endroit.
-Deux versions de sortie sont possibles au choix.
-1. un fichier de liens avec une structure source, target auquel s'ajoute l'identifiant du voyage (date+lieu)
+Il génère en sortie un fichier avec des liens entre chaque personne qui est présente au même moment au même lieu.
+Deux versions de sortie au choix sont possibles.
+1. un fichier de liens avec une structure **source, target** auquel s'ajoute l'identifiant du voyage (date+lieu)
 Voici la sortie attendue :
 ```
 source,target,dateAndPlace
@@ -33,17 +36,29 @@ Paillac_Jean-Michel_4421,Suberville_François_4486,1809-09-04_Agen
 Paillac_Jean-Michel_4421,Bellan_Bernard_4221,1809-09-04_Agen
 Suberville_François_4486,Bellan_Bernard_4221,1809-09-04_Agen
 ```
-2. un fichier de liens avec une structure source, target auquel s'ajoute le poids de chaque lien (nombre de fois que deux personnes sont connectées, indépendamment du moment)
-
+2. un fichier de liens avec une structure **source, target** auquel s'ajoute le poids de chaque lien (nombre de fois que deux personnes sont connectées, indépendamment du moment)
+Voici la structure attendue
+```
+source,target,weight
+Mellet_Anne-Marie_120,Fourastié_Pierre_12531,2
+Bellan_Barthélémy_4222,Paillac_Jean-Michel_4421,1
+Bellan_Barthélémy_4222,Suberville_François_4486,1
+Bellan_Barthélémy_4222,Bellan_Bernard_4221,1
+Paillac_Jean-Michel_4421,Suberville_François_4486,1
+Paillac_Jean-Michel_4421,Bellan_Bernard_4221,1
+Suberville_François_4486,Bellan_Bernard_4221,1
+Fourastié_Pierre_12531,Mellet_Anne-Marie_120,1
+```
 
 Un fichier contenant des doublons est généré automatiquement si une personne apparaît plusieurs fois au même endroit au même moment.
 
-## Dossier output_data
-Dossier dans lequel on trouve à la fin du traitement le fichier avec les liens du network et le fichier avec les doublons
+## output_data
+Dossier dans lequel on trouve à la fin du traitement les fichiers avec les liens du network et le fichier avec les doublons
 
-## Script parseCSVfromPersByPlace-Date.py
-Le script qu'il faut lancer depuis son terminal avec la commande 
-`python3 parseCSVfromPersByPlace-Date.py`
+## Etapes pour exécuter le programme 
+- installer Python3
+- dans le terminal taper `git clone https://github.com/vasaura/networks`
+- se déplacer dans le dossier network et taper dans le terminal la commande `python3 launchTransformation.py`
+- suivre les instructions
 
-Co code fonctionne avec la version Python 3.11. 
 
