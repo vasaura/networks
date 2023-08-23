@@ -11,10 +11,10 @@ Created on : 22/08/2023 18:53
 import csv
 from itertools import combinations
 from .parseCSVfromPersByPlaceDate import parseDatabaseFile
-from .CONSTANTES import NETWORKFILEWITHWEIGHT, DUPLICATES
+from CONSTANTES import NETWORKFILEWITHWEIGHT, DUPLICATES
 
 
-def generateLinkWithWeight(INPUTFILE):
+def generateLinkWithWeight(INPUTFILE, DUPLICATES, NETWORKFILEWITHWEIGHT):
     # open to write the csv file for the network links containing the weight of links
     with open(NETWORKFILEWITHWEIGHT, 'w', newline='') as networkFile:
         fieldnames = ['source', 'target', "weight"]
@@ -42,8 +42,6 @@ def generateLinkWithWeight(INPUTFILE):
                                     countWeight[key]= countWeight[key]+1
                                 else:
                                     countWeight[i]=1
-
-
                         else:
                             countWeight[i]=1
 

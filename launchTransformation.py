@@ -10,6 +10,10 @@ Created on : 23/08/2023 13:23
 import os
 from scripts.generate_links_weight import generateLinkWithWeight
 from scripts.generate_links_dates_place import generateLinksWithDatesAndPlaces
+from CONSTANTES import NETWORKFILEWITHWEIGHT, NETWORKFILEWITHDATES, DUPLICATES
+
+absolute_path = os.path.dirname(__file__)
+duplicatesFile = os.path.join(absolute_path, DUPLICATES)
 
 INPUTFILE = input("Renseigner le chemin du fichier csv qui contient l'extraction depuis la bdd : \n")
 
@@ -22,8 +26,10 @@ while os.path.exists(INPUTFILE) == False:
 else:
     method= input("Pour générer des liens avec calcul du poids tapez 1.\nPour générer des liens avec les dates et les lieu, tapez 2.")
     if int(method) == 1:
-        generateLinkWithWeight(INPUTFILE)
+        outputWeightFile = os.path.join(absolute_path, NETWORKFILEWITHWEIGHT)
+        generateLinkWithWeight(INPUTFILE, duplicatesFile,outputWeightFile)
     elif int(method)==2:
-        generateLinksWithDatesAndPlaces(INPUTFILE)
+        outputDatePlaceFile = os.path.join(absolute_path, NETWORKFILEWITHDATES)
+        generateLinksWithDatesAndPlaces(INPUTFILE, duplicatesFile, outputDatePlaceFile)
     else:
         input("Methode inexistante. Veuillez taper 1 ou 2 pour lancer le traitement")

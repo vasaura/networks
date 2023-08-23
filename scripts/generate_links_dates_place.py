@@ -11,9 +11,8 @@ import csv
 from itertools import combinations
 
 from .parseCSVfromPersByPlaceDate import parseDatabaseFile
-from .CONSTANTES import NETWORKFILEWITHDATES, DUPLICATES
 
-def generateLinksWithDatesAndPlaces(INPUTFILE):
+def generateLinksWithDatesAndPlaces(INPUTFILE, DUPLICATES,NETWORKFILEWITHDATES):
 
     # open to write the csv file for the network links containing dates and places
     with open(NETWORKFILEWITHDATES, 'w', newline='') as networkFile:
