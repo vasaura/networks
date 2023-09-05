@@ -52,12 +52,10 @@ Fourastié_Pierre_12531,Mellet_Anne-Marie_120,1
 
 Un fichier contenant des doublons est généré automatiquement si une personne apparaît plusieurs fois au même endroit au même moment.
 
-## output_data
-Dossier dans lequel on trouve à la fin du traitement les fichiers avec les liens du network et le fichier avec les doublons
-
-## Etapes pour exécuter le programme 
+## Prérequis techniques et étapes d'exécution du programme 
 - installer Python3
-- dans le terminal taper `git clone https://github.com/vasaura/networks`
+- installer GIT
+- ouvrez le terminal dans un dossier choisi et taper `git clone https://github.com/vasaura/networks`
 - se déplacer dans le dossier network et taper dans le terminal la commande `python3 launchTransformation.py`
 - suivre les instructions
 

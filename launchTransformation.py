@@ -16,22 +16,31 @@ absolute_path = os.path.dirname(__file__)
 
 # ask user to write the absolute path of the input file and the output folder
 INPUTFILE = input("Renseigner le chemin absolu du fichier csv qui contient l'extraction depuis la bdd : \n")
-OUTPUTFOLDER = input("Renseigner le chemin absolu vers le dossier qui contiendra les fichiers traités : \n")
-duplicatesFile = os.path.join(OUTPUTFOLDER+ DUPLICATES)
-outputWeightFile = os.path.join(OUTPUTFOLDER+ NETWORKFILEWITHWEIGHT)
-outputDatePlaceFile = os.path.join(OUTPUTFOLDER+ NETWORKFILEWITHDATES)
 
-# test if the path given by users exists
+
+# teste if the path given by users exists
 while os.path.exists(INPUTFILE) == False:
     #if not, a message will be sent
     INPUTFILE = input("Chemin incorrect. Renseigner le chemin absolu du fichier csv qui contient l'extraction de la bdd : \n")
 
-# if the path is correct,  generateLinksWithDatesAndPlaces will be called to launch the treatment
 else:
-    method= input("Pour générer des liens avec calcul du poids tapez 1.\nPour générer des liens avec les dates et les lieu, tapez 2.\n")
-    if int(method) == 1:
-        generateLinkWithWeight(INPUTFILE, duplicatesFile,outputWeightFile)
-    elif int(method)==2:
-        generateLinksWithDatesAndPlaces(INPUTFILE, duplicatesFile, outputDatePlaceFile)
+    OUTPUTFOLDER = input("Renseigner le chemin absolu vers un dossier de votre choix qui contiendra les fichiers traités : \n")
+    while os.path.exists(OUTPUTFOLDER) == False:
+        #if not, a message will be sent
+        OUTPUTFOLDER = input("Chemin incorrect. Renseigner le chemin absolu vers un dossier de votre choix qui contiendra les fichiers traités : \n")
+
+    # if the path is correct, the treatment will be launched
     else:
-        input("Methode inexistante. Veuillez taper 1 ou 2 pour lancer le traitement")
+        duplicatesFile = os.path.join(OUTPUTFOLDER + DUPLICATES)
+        outputWeightFile = os.path.join(OUTPUTFOLDER + NETWORKFILEWITHWEIGHT)
+        outputDatePlaceFile = os.path.join(OUTPUTFOLDER + NETWORKFILEWITHDATES)
+
+        method = input("Pour générer des liens avec calcul du poids tapez 1.\nPour générer des liens avec les dates et les lieux, tapez 2.\n")
+        #while the input is a string or is not 1 an 2, it will generate a message to ask the right number
+        while method.isdigit()==False or (int(method) != 1 and int(method) != 2):
+            method=input("Vous avez écrit: "+ str(method)+" Réponse incorrecte. Veuillez taper 1 ou 2 pour lancer le traitement")
+        else:
+            if int(method) == 1:
+                generateLinkWithWeight(INPUTFILE, duplicatesFile, outputWeightFile)
+            if int(method) == 2:
+                generateLinksWithDatesAndPlaces(INPUTFILE, duplicatesFile, outputDatePlaceFile)
